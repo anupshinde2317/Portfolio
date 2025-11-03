@@ -1,0 +1,689 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Anup Rajesh Shinde — Portfolio</title>
+  <meta name="description" content="Anup Rajesh Shinde — Animator · Programmer · Web Developer" />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    /* ---------- ROOT & RESets ---------- */
+    :root{
+      --bg-1: #030317;
+      --bg-2: #061329;
+      --glass: rgba(255,255,255,0.04);
+      --accent-a: #00f0ff;
+      --accent-b: #8a63ff;
+      --muted: rgba(230,245,255,0.75);
+      --glass-border: rgba(255,255,255,0.04);
+      --card-shadow: 0 12px 40px rgba(2,6,23,0.6);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:"Poppins",system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;
+      color: #e6f9ff; background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(138,99,255,0.06), transparent),
+        linear-gradient(180deg,var(--bg-1),var(--bg-2));
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      overflow-x:hidden; -webkit-tap-highlight-color:transparent;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;height:auto;display:block}
+    /* Utility */
+    .container{max-width:1200px;margin:0 auto;padding:0 20px}
+    section{padding:88px 0}
+    h1,h2,h3{margin:0}
+    p{margin:0;color:var(--muted)}
+
+    /* ---------- NAV ---------- */
+    header{position:fixed;left:0;right:0;top:18px;z-index:1400;pointer-events:none}
+    nav.navbar{
+      margin:0 auto; max-width:1200px; display:flex;align-items:center;gap:18px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.10));
+      backdrop-filter: blur(8px) saturate(120%); border-radius:12px; padding:10px 18px;
+      border:1px solid var(--glass-border); box-shadow:var(--card-shadow); pointer-events:all;
+      transition: transform .28s ease, box-shadow .25s ease;
+    }
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{
+      width:44px;height:44px;border-radius:10px;
+      background:linear-gradient(135deg,var(--accent-a),var(--accent-b));
+      box-shadow: 0 8px 30px rgba(0,240,255,0.09), 0 4px 12px rgba(138,99,255,0.06);
+      display:flex;align-items:center;justify-content:center;font-weight:800;color:#021;
+    }
+    .brand .txt{line-height:1}
+    .brand .txt small{display:block;font-size:11px;opacity:0.7}
+    .links{margin-left:auto;display:flex;gap:12px;align-items:center}
+    .links a{padding:8px 12px;border-radius:10px;font-weight:600;color:rgba(230,247,255,0.9);transition:all .18s}
+    .links a:hover,.links a.active{
+      color:var(--accent-a); box-shadow:0 6px 22px rgba(0,240,255,0.06); transform:translateY(-3px);
+      background: linear-gradient(90deg, rgba(0,240,255,0.04), rgba(138,99,255,0.03));
+    }
+    .cta{background:linear-gradient(90deg,var(--accent-a),var(--accent-b));color:#012;padding:10px 14px;border-radius:12px;font-weight:800;box-shadow:0 10px 40px rgba(0,240,255,0.08)}
+    .hamb{display:none}
+    @media (max-width:880px){
+      .links{display:none}
+      .hamb{display:block;margin-left:auto}
+    }
+
+    /* ---------- HERO ---------- */
+    .hero{min-height:92vh;position:relative;display:flex;align-items:center;padding-top:140px;overflow:hidden}
+    #canvas-bg{position:absolute;inset:0;z-index:0;display:block}
+    .hero-inner{position:relative;z-index:6}
+    .grid-hero{display:grid;grid-template-columns:1fr 420px;gap:36px;align-items:center}
+    @media (max-width:980px){ .grid-hero{grid-template-columns:1fr} .hero{padding-bottom:40px} }
+    .hero-left h1{font-size:clamp(28px,4.8vw,60px);line-height:1;letter-spacing:-1px}
+    .hero-left h1 .name{color:var(--accent-a);text-shadow:0 0 28px rgba(0,240,255,0.06)}
+    .typing{display:flex;gap:12px;align-items:center;margin:12px 0 18px;font-weight:600;color:#dff9ff}
+    #caret{width:8px;height:28px;border-radius:6px;background:linear-gradient(180deg,var(--accent-a),var(--accent-b));opacity:0.95}
+    .lead{max-width:760px;color:rgba(220,245,255,0.92);line-height:1.6;margin-bottom:18px}
+    .hero-actions{display:flex;gap:12px;align-items:center}
+    .btn-main{background:linear-gradient(90deg,var(--accent-a),var(--accent-b));color:#021;padding:12px 18px;border-radius:12px;font-weight:800;box-shadow:0 12px 40px rgba(0,240,255,0.08)}
+    .btn-ghost{padding:10px 14px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);color:rgba(230,247,255,0.92);background:transparent}
+    .btn-main:hover{transform:translateY(-4px) scale(1.02)}
+    .card-right{
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12));
+      border-radius:14px;padding:20px;border:1px solid rgba(255,255,255,0.03);
+      box-shadow:var(--card-shadow);transform-style:preserve-3d;transition:transform .45s cubic-bezier(.2,.9,.2,1);
+    }
+    .card-right:hover{transform:translateY(-8px) rotateX(4deg) rotateY(-6deg)}
+    .pill{padding:8px 10px;border-radius:999px;background:rgba(255,255,255,0.03);font-weight:700;margin:6px;display:inline-block}
+
+    /* ---------- SECTIONS ---------- */
+    .section-title{font-size:28px;font-weight:800;margin-bottom:8px}
+    .muted{color:var(--muted)}
+
+    /* SKILLS */
+    .skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    @media (max-width:900px){ .skills-grid{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:560px){ .skills-grid{grid-template-columns:1fr} }
+    .skill-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:18px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:var(--card-shadow);transition:transform .28s}
+    .skill-card:hover{transform:translateY(-8px)}
+    .progress{height:12px;background:rgba(255,255,255,0.05);border-radius:999px;margin-top:12px;overflow:hidden}
+    .progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent-a),var(--accent-b));width:0%;transition:width 1.2s cubic-bezier(.2,.9,.2,1)}
+
+    /* SERVICES */
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    @media (max-width:960px){ .services-grid{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:560px){ .services-grid{grid-template-columns:1fr} }
+    .service-card{padding:20px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);box-shadow:var(--card-shadow);transition:transform .28s}
+    .service-card:hover{transform:translateY(-10px)}
+
+    /* PROJECTS */
+    .projects-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+    @media (max-width:960px){ .projects-grid{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:600px){ .projects-grid{grid-template-columns:1fr} }
+    .proj{height:220px;border-radius:12px;overflow:hidden;position:relative;padding:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12));border:1px solid rgba(255,255,255,0.04);transition:transform .3s, box-shadow .3s}
+    .proj:hover{transform:translateY(-10px);box-shadow:0 20px 60px rgba(0,240,255,0.06)}
+    .proj-title{font-weight:800;color:var(--accent-a);margin-bottom:6px}
+
+    /* tilt shadow */
+    .tilt{transform-style:preserve-3d;will-change:transform}
+
+    /* CONTACT */
+    .contact-grid{display:grid;grid-template-columns:1fr 360px;gap:24px}
+    @media (max-width:940px){ .contact-grid{grid-template-columns:1fr} }
+    .contact-card{padding:22px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12));box-shadow:var(--card-shadow)}
+
+    /* FOOTER */
+    footer{padding:46px 0;text-align:center;color:rgba(230,245,255,0.6)}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(18px);transition:all .7s cubic-bezier(.2,.9,.2,1)}
+    .reveal.visible{opacity:1;transform:none}
+
+    /* custom cursor */
+    .cursor{position:fixed;top:0;left:0;width:18px;height:18px;border-radius:50%;pointer-events:none;z-index:2000;transform:translate(-50%,-50%);mix-blend-mode:screen;transition:transform .12s linear, width .12s ease, height .12s ease;box-shadow:0 0 18px rgba(0,240,255,0.14)}
+    .cursor.big{width:44px;height:44px}
+
+    /* modal */
+    .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:linear-gradient(180deg, rgba(2,6,23,0.6), rgba(2,6,23,0.9));z-index:1600}
+    .modal.active{display:flex}
+    .modal-inner{max-width:920px;width:92%;padding:22px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12));border:1px solid rgba(255,255,255,0.03);box-shadow:var(--card-shadow)}
+    .profile-photo {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 20px;
+  border: 4px solid var(--accent-a);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.25);
+  transition: all 0.4s ease;
+  display: inline-block;
+}
+
+.profile-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.profile-photo:hover {
+  box-shadow: 0 0 40px var(--accent-a);
+  transform: scale(1.05);
+}
+
+.profile-photo:hover img {
+  transform: scale(1.1);
+}
+
+.highlight {
+  color: var(--accent-a);
+  font-weight: bold;
+}
+.hero-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 50px;
+  padding: 60px 0;
+}
+
+.intro-left {
+  flex: 0 0 220px;
+  display: flex;
+  justify-content: center;
+}
+
+.profile-pic {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid #00ffff;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.profile-pic:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px rgba(0, 255, 255, 0.8);
+}
+
+.intro-right {
+  max-width: 600px;
+  color: #fff;
+}
+
+.intro-right h1 {
+  font-size: 2.2rem;
+  margin-bottom: 15px;
+}
+
+.highlight {
+  color: #00ffff;
+  font-weight: 600;
+}
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header>
+    <nav class="navbar container" role="navigation" aria-label="Main nav">
+      <div class="brand" aria-hidden="true">
+        <div class="logo">A</div>
+        <div class="txt"><strong>Anup Rajesh</strong><small>Animator · Programmer · Web Dev</small></div>
+      </div>
+
+      <div class="links" role="menu">
+        <a class="nav-link" href="#home">Home</a>
+        <a class="nav-link" href="#about">About</a>
+        <a class="nav-link" href="#skills">Skills</a>
+        <a class="nav-link" href="#services">Services</a>
+        <a class="nav-link" href="#projects">Projects</a>
+        <a class="nav-link" href="#contact">Contact</a>
+        <a class="cta" href="resume.pdf" download>Download Resume</a>
+      </div>
+
+      <button class="hamb" aria-label="toggle menu" onclick="toggleNav()">☰</button>
+    </nav>
+  </header>
+
+  <!-- CURSOR -->
+  <div id="cursor" class="cursor" aria-hidden="true"></div>
+
+  <!-- HERO -->
+  <main>
+    <section id="home" class="hero" aria-label="Home">
+      <canvas id="canvas-bg"></canvas>
+<div class="intro-left">
+      <img src="profile photo.jpeg" alt="Anup Rajesh Shinde" class="profile-pic">
+    </div>
+
+      <div class="hero-inner container">
+        <div class="grid-hero">
+          <div class="hero-left">
+            <h1>Hey — I'm <span class="name">Anup Rajesh Shinde</span>
+     </h1>
+
+            <div class="typing" aria-hidden="true">
+              <div id="type-line">Animator • Programmer • Web Developer</div>
+              <div id="caret"></div>
+            </div>
+
+            <p class="lead">I’m a kind and curious person who enjoys learning, building and creating. I blend motion, visual design and code to craft useful and delightful digital experiences.</p>
+
+            <div class="hero-actions">
+              <a class="btn-main" href="#contact">See more</a>
+              <a class="btn-ghost" href="#projects">See Projects</a>
+            </div>
+          </div>
+
+          <aside class="card-right" aria-label="Quick info">
+            <h4 style="color:var(--accent-b)">Quick Info</h4>
+            <div style="margin:10px 0 12px;color:var(--muted)">Maharashtra, India</div>
+            <div style="display:flex;gap:12px;margin-bottom:12px">
+              <div style="flex:1">
+                <div class="muted">Email</div>
+                <div style="font-weight:700"><a href="mailto:anupshinde2317@gmail.com">anupshinde2317@gmail.com</a></div>
+              </div>
+              <div style="flex:1">
+                <div class="muted">Phone</div>
+                <div style="font-weight:700"><a href="tel:+919226788266">+91 9226788266</a></div>
+              </div>
+            </div>
+
+            <h4 style="margin-top:8px">Top Skills</h4>
+            <div style="display:flex;flex-wrap:wrap;margin-top:8px">
+              <span class="pill">Web Dev</span>
+              <span class="pill">Animation</span>
+              <span class="pill">Java</span>
+              <span class="pill">Python</span>
+              <span class="pill">UI/UX</span>
+              <span class="pill">3D Basics</span>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="container reveal" aria-label="About">
+      <h2 class="section-title">About Me</h2>
+      <p class="muted">Hey There! I am Anup Shinde. I am a kind and curious person who enjoys learning new things and meeting new people. I like spending time doing activities that make me happy, whether it's reading, exploring nature, or working on creative projects. I believe in staying positive, helping others, and always trying to be the best version of myself.</p>
+    </section>
+
+    <!-- SKILLS -->
+    <section id="skills" class="container reveal" aria-label="Skills">
+      <h2 class="section-title">Skills</h2>
+      <div class="skills-grid" style="margin-top:18px">
+        <div class="skill-card">
+          <h3>Web Developer</h3>
+          <div class="muted">HTML • CSS • JavaScript • React (basics)</div>
+          <div class="progress"><i data-width="90%"></i></div>
+        </div>
+        <div class="skill-card">
+          <h3>Programmer</h3>
+          <div class="muted">Java • Python • Algorithms</div>
+          <div class="progress"><i data-width="85%"></i></div>
+        </div>
+        <div class="skill-card">
+          <h3>Animator</h3>
+          <div class="muted">Motion Design • CSS Animations • Lottie</div>
+          <div class="progress"><i data-width="88%"></i></div>
+        </div>
+        <div class="skill-card">
+          <h3>UI / UX</h3>
+          <div class="muted">Wireframing • Prototyping • Accessibility</div>
+          <div class="progress"><i data-width="78%"></i></div>
+        </div>
+        <div class="skill-card">
+          <h3>Back-end Basics</h3>
+          <div class="muted">Node • PHP • SQL</div>
+          <div class="progress"><i data-width="65%"></i></div>
+        </div>
+        <div class="skill-card">
+          <h3>Tools</h3>
+          <div class="muted">VSCode • Git • Figma • Blender</div>
+          <div class="progress"><i data-width="70%"></i></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="reveal" aria-label="Services">
+      <div class="container">
+        <h2 class="section-title">My Services</h2>
+        <p class="muted">I offer reliable, professional, and friendly services focused on quality and client satisfaction.</p>
+
+        <div class="services-grid" style="margin-top:22px">
+          <div class="service-card">
+            <h3>Web Design</h3>
+            <p>Designing appealing, accessible, and well-structured websites with attention to layout, color, and UX.</p>
+          </div>
+          <div class="service-card">
+            <h3>Animation</h3>
+            <p>Motion design, micro-interactions and animations that improve storytelling and user engagement.</p>
+          </div>
+          <div class="service-card">
+            <h3>Web Development</h3>
+            <p>Front-end & basic back-end — performance-focused and responsive solutions using modern tools.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects" class="container reveal" aria-label="Projects">
+      <h2 class="section-title">Projects</h2>
+      <p class="muted">Selected work — click any card to view details.</p>
+
+      <div class="projects-grid" style="margin-top:18px">
+        <div class="proj tilt" data-title="Interactive Neon Portfolio" data-desc="A dynamic portfolio with canvas effects, tilt cards, and animated reveal." onclick="openProject(this)">
+          <div class="proj-body"><div class="proj-title">Interactive Neon Portfolio</div><div class="muted">Canvas particles • Parallax</div></div>
+        </div>
+
+        <div class="proj tilt" data-title="Motion Landing" data-desc="Motion-first landing page with Lottie and micro-interactions." onclick="openProject(this)">
+          <div class="proj-body"><div class="proj-title">Motion Landing</div><div class="muted">Lottie • Micro-interactions</div></div>
+        </div>
+
+        <div class="proj tilt" data-title="Task Manager (Java backend)" data-desc="A small task manager demonstrating Java REST APIs and CRUD operations." onclick="openProject(this)">
+          <div class="proj-body"><div class="proj-title">Task Manager App</div><div class="muted">Java • REST • CRUD</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="container reveal" aria-label="Contact">
+      <h2 class="section-title">Contact Me</h2>
+      <div class="contact-grid" style="margin-top:18px">
+        <div class="contact-card">
+          <p class="muted">Want to start a project or ask something? I reply quickly and professionally.</p>
+          <div style="display:flex;flex-direction:column;gap:12px;margin-top:14px">
+            <a class="muted" href="mailto:anupshinde2317@gmail.com">✉️ anupshinde2317@gmail.com</a>
+            <a class="muted" href="tel:+919226788266">📞 +91 9226788266</a>
+            <div style="margin-top:12px">
+              <a class="btn-main" href="mailto:anupshinde2317@gmail.com?subject=Hi%20Anup">Email Me</a>
+              <a class="btn-ghost" href="resume.pdf" download style="margin-left:10px">Download Resume</a>
+            </div>
+          </div>
+        </div>
+
+        <div style="padding:22px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.12));border:1px solid rgba(255,255,255,0.03);box-shadow:var(--card-shadow)">
+          <h4 style="margin:0 0 8px">Quick Message</h4>
+          <form id="contact-form" onsubmit="submitContact(event)" style="display:flex;flex-direction:column;gap:8px">
+            <input id="name" type="text" placeholder="Your name" required style="padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:inherit">
+            <input id="email" type="email" placeholder="Your email" required style="padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:inherit">
+            <textarea id="message" rows="4" placeholder="Message" required style="padding:10px;border-radius:8px;background:transparent;border:1px solid rgba(255,255,255,0.04);color:inherit"></textarea>
+            <div style="display:flex;gap:8px">
+              <button class="btn-main" type="submit">Send Message</button>
+              <button class="btn-ghost" type="reset">Reset</button>
+            </div>
+            <div id="status" style="margin-top:6px;color:var(--muted)"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <div style="height:44px"></div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div>© <strong>Anup Rajesh Shinde</strong> — 2025</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- PROJECT MODAL -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog">
+    <div class="modal-inner">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <h3 id="modal-title"></h3>
+        <button onclick="closeProject()" style="background:transparent;border:none;color:var(--muted);font-size:20px">✕</button>
+      </div>
+      <p id="modal-desc" style="margin-top:10px;color:var(--muted)"></p>
+      <div style="margin-top:14px;display:flex;gap:10px">
+        <a class="btn-main" href="#">View Live</a>
+        <a class="btn-ghost" href="#">Source</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- CURSOR -->
+  <div id="cursor" class="cursor" aria-hidden="true"></div>
+
+  <!-- ================== JavaScript (advanced) ================== -->
+  <script>
+    /* ---------- Helpers ---------- */
+    const $ = (s, root=document) => root.querySelector(s);
+    const $$ = (s, root=document) => Array.from(root.querySelectorAll(s));
+
+    /* ---------- Responsive hamburger ---------- */
+    function toggleNav(){
+      const links = document.querySelector('.links');
+      if(getComputedStyle(links).display === 'none') {
+        links.style.display = 'flex';
+        links.style.flexDirection = 'column';
+        links.style.position = 'absolute';
+        links.style.right = '18px';
+        links.style.top = '66px';
+        links.style.background = 'linear-gradient(180deg, rgba(0,0,0,0.95), rgba(0,0,0,0.98))';
+        links.style.padding = '12px';
+        links.style.borderRadius = '10px';
+        links.style.zIndex = '1600';
+      } else {
+        links.style.display = '';
+        links.style.flexDirection = '';
+      }
+    }
+
+    /* ---------- Canvas background: particles + parallax waves ---------- */
+    (function(){
+      const canvas = document.getElementById('canvas-bg');
+      if(!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const DPR = Math.max(1, window.devicePixelRatio || 1);
+      let W = innerWidth, H = innerHeight;
+      function resize(){
+        W = innerWidth; H = innerHeight;
+        canvas.width = W*DPR; canvas.height = H*DPR;
+        canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+        ctx.setTransform(DPR,0,0,DPR,0,0);
+      }
+      let particles = [];
+      function rand(a,b){return Math.random()*(b-a)+a}
+      function init(){
+        particles = [];
+        const count = Math.max(32, Math.floor(W/40));
+        for(let i=0;i<count;i++){
+          particles.push({
+            x: rand(0,W), y: rand(0,H),
+            r: rand(1.2,6),
+            vx: rand(-0.25,0.6),
+            vy: rand(-0.1,0.25),
+            hue: rand(170, 280),
+            alpha: rand(0.04,0.28)
+          });
+        }
+      }
+      function draw(){
+        ctx.clearRect(0,0,W,H);
+        // soft gradient overlay
+        const g = ctx.createLinearGradient(0,0,W,H);
+        g.addColorStop(0,'rgba(2,6,23,0.06)');
+        g.addColorStop(1,'rgba(2,6,23,0.20)');
+        ctx.fillStyle = g; ctx.fillRect(0,0,W,H);
+
+        // parallax sine-wave (subtle)
+        ctx.save();
+        ctx.globalAlpha = 0.06;
+        ctx.beginPath();
+        const t = Date.now()*0.0006;
+        for(let x=0;x<=W;x+=6){
+          const y = H*0.7 + Math.sin((x*0.009)+t*2)*60 + Math.cos((x*0.013)+t)*18;
+          if(x===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+        }
+        ctx.lineTo(W,H); ctx.lineTo(0,H); ctx.closePath();
+        ctx.fillStyle = 'rgba(120,100,255,0.06)'; ctx.fill();
+        ctx.restore();
+
+        // particles
+        for(const p of particles){
+          p.x += p.vx; p.y += p.vy;
+          if(p.x > W+40) p.x = -40;
+          if(p.x < -40) p.x = W+40;
+          if(p.y > H+40) p.y = -40;
+          if(p.y < -40) p.y = H+40;
+          ctx.beginPath();
+          ctx.fillStyle = `hsla(${p.hue},80%,55%,${p.alpha})`;
+          ctx.arc(p.x,p.y,p.r,0,Math.PI*2); ctx.fill();
+        }
+
+        // subtle connections
+        for(let i=0;i<particles.length;i++){
+          for(let j=i+1;j<particles.length;j++){
+            const a=particles[i], b=particles[j];
+            const dx=a.x-b.x, dy=a.y-b.y, d=Math.sqrt(dx*dx+dy*dy);
+            if(d<110){
+              ctx.beginPath(); ctx.moveTo(a.x,a.y); ctx.lineTo(b.x,b.y);
+              ctx.strokeStyle = `rgba(110,160,255,${0.006*(110-d)})`; ctx.lineWidth=1; ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(draw);
+      }
+      window.addEventListener('resize', ()=>{ resize(); init(); });
+      resize(); init(); draw();
+    })();
+
+    /* ---------- Typing effect ---------- */
+    (function(){
+      const lines = ["Animator","Programmer","Web Developer","Creative Thinker","Computer Engineering Student"];
+      const el = document.getElementById('type-line');
+      let idx=0,charIdx=0,dir=1,wait=0;
+      function step(){
+        if(wait>0){ wait--; setTimeout(step,60); return; }
+        const cur = lines[idx];
+        charIdx += dir;
+        el.textContent = cur.slice(0,charIdx);
+        if(dir===1 && charIdx===cur.length){ dir=-1; wait=20; }
+        else if(dir===-1 && charIdx===0){ dir=1; idx=(idx+1)%lines.length; wait=6; }
+        setTimeout(step, 70+Math.random()*40);
+      }
+      step();
+      const caret = document.getElementById('caret');
+      setInterval(()=> caret.style.opacity = caret.style.opacity==='0'?'1':'0', 500);
+    })();
+
+    /* ---------- Custom cursor ---------- */
+    (function(){
+      const cur = document.getElementById('cursor');
+      if(!cur) return;
+      let mx=0,my=0;
+      document.addEventListener('mousemove',(e)=>{ mx=e.clientX; my=e.clientY; cur.style.transform = `translate(${mx}px, ${my}px)`; });
+      // enlarge on hover
+      document.addEventListener('mouseover',(e)=>{
+        const t = e.target;
+        if(t.closest('a') || t.closest('button') || t.classList.contains('proj') || t.classList.contains('btn-main')) cur.classList.add('big'); else cur.classList.remove('big');
+      });
+    })();
+
+    /* ---------- Reveal on scroll (IntersectionObserver) ---------- */
+    (function(){
+      const obs = new IntersectionObserver((entries)=>{
+        entries.forEach(ent=>{
+          if(ent.isIntersecting) ent.target.classList.add('visible');
+        });
+      }, {threshold:0.18});
+      document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+      // animate progress bars once visible
+      const progObs = new IntersectionObserver((entries)=>{
+        entries.forEach(ent=>{
+          if(ent.isIntersecting){
+            $$('.progress > i', ent.target).forEach(i => {
+              const w = i.getAttribute('data-width') || '70%';
+              i.style.width = w;
+            });
+            progObs.unobserve(ent.target);
+          }
+        });
+      }, {threshold:0.2});
+      $$('.skills-grid').forEach(g=>progObs.observe(g));
+    })();
+
+    /* ---------- Scrollspy & smooth scroll ---------- */
+    (function(){
+      const links = $$('.nav-link'); const sections = links.map(a => document.getElementById(a.getAttribute('href').substring(1)));
+      links.forEach(a => a.addEventListener('click', (ev)=>{
+        ev.preventDefault(); const id = a.getAttribute('href').slice(1); const sec = document.getElementById(id);
+        window.scrollTo({top: sec.offsetTop - 80, behavior:'smooth'});
+      }));
+      window.addEventListener('scroll', ()=>{
+        const fromTop = window.scrollY + 120;
+        let cur = null;
+        sections.forEach(s=>{ if(s.offsetTop <= fromTop) cur = s; });
+        links.forEach(a => a.classList.remove('active'));
+        if(cur) { const link = document.querySelector('.nav-link[href="#'+cur.id+'"]'); if(link) link.classList.add('active'); }
+      });
+    })();
+
+    /* ---------- Tilt effect for project cards ---------- */
+    (function(){
+      $$('.tilt').forEach(card=>{
+        card.addEventListener('mousemove', e=>{
+          const rect=card.getBoundingClientRect();
+          const x = e.clientX - rect.left; const y = e.clientY - rect.top;
+          const cx = rect.width/2; const cy = rect.height/2;
+          const dx = (x-cx)/cx; const dy = (y-cy)/cy;
+          card.style.transform = `perspective(900px) rotateX(${(-dy*6)}deg) rotateY(${(dx*8)}deg) translateZ(6px)`;
+        });
+        card.addEventListener('mouseleave', ()=> card.style.transform = '');
+      });
+    })();
+
+    /* ---------- Project modal ---------- */
+    function openProject(el){
+      const title = el.getAttribute('data-title'), desc = el.getAttribute('data-desc');
+      $('#modal').classList.add('active'); $('#modal').setAttribute('aria-hidden','false');
+      $('#modal-title').textContent = title; $('#modal-desc').textContent = desc;
+    }
+    function closeProject(){ $('#modal').classList.remove('active'); $('#modal').setAttribute('aria-hidden','true'); }
+    $('#modal')?.addEventListener('click', (e)=>{ if(e.target===$('#modal')) closeProject(); });
+
+    /* ---------- Contact form (client-side stub) ---------- */
+    function submitContact(e){
+      e.preventDefault();
+      const name = $('#name').value.trim(), email = $('#email').value.trim(), message = $('#message').value.trim();
+      const status = $('#status');
+      if(!name||!email||!message){ status.textContent = 'Please fill all fields.'; return; }
+      status.textContent = 'Sending…';
+      setTimeout(()=>{ status.textContent = "Message sent! I'll get back to you soon."; $('#contact-form').reset(); }, 900);
+    }
+
+    /* ---------- Entrance nav hide on scroll ---------- */
+    (function(){
+      let lastY = window.scrollY; const nav = document.querySelector('nav.navbar');
+      window.addEventListener('scroll', ()=>{
+        const y = window.scrollY;
+        if(y > lastY && y > 120) nav.style.transform = 'translateY(-18px)'; else nav.style.transform = 'translateY(0)';
+        lastY = y;
+      });
+    })();
+
+    /* ---------- Accessibility: keyboard support for modal ---------- */
+    document.addEventListener('keydown', (e)=>{
+      if(e.key==='Escape') closeProject();
+    });
+
+    /* ---------- Initialize active reveals for first view ---------- */
+    window.addEventListener('load', ()=> {
+      setTimeout(()=> document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible')), 200);
+      // init progress bars (in case skills in view)
+      $$('.progress > i').forEach(i => { i.style.width = i.getAttribute('data-width') || '70%'; });
+    });
+
+  </script>
+</body>
+</html>
